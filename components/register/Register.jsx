@@ -4,11 +4,12 @@ import { Button, TextInput, View, StyleSheet} from 'react-native';
 import { Formik } from 'formik';
 
 export const Register = props => (
-  <Formik
+  <Formik     
     initialValues={{email:"" ,userName:"" , password:""}}
-    onSubmit={values => console.log(values.email,values.userName, values.password)}
-  >
+    onSubmit={values => console.log(values)}>
+      
     {({ handleChange, handleBlur, handleSubmit, values }) => (
+      
       <View>
         
         <TextInput style={styles.TextInput}
@@ -35,6 +36,7 @@ export const Register = props => (
       
     )}
   </Formik>
+  
 );
 
 
