@@ -1,56 +1,53 @@
-// Formik x React Native example
-import React from 'react';
-import { Button, TextInput, View, StyleSheet} from 'react-native';
-import { Formik } from 'formik';
+import { useFormik } from 'formik'
+import React from 'react'
+import { Button, View } from 'react-native'
 
-export const Register = props => (
-  <Formik     
-    initialValues={{email:"" ,userName:"" , password:""}}
-    onSubmit={values => console.log(values)}>
+export const Register =({navigation}) =>{
+  // let listOfUsers = []
+  // const formData = new FormData()
+  const Formik = useFormik({
+    initialValues:{
+      username:"",
+      email:"",
+      password:""
+    },
+    onSubmit:values=>{
+      console.log(JSON.stringify(values))
+      console.log(values)
+  } 
+  })
+
+
+  return (
+    <View>
+    <form onSubmit={Formik.handleSubmit}> 
       
-    {({ handleChange, handleBlur, handleSubmit, values }) => (
-      
-      <View>
-        
-        <TextInput style={styles.TextInput}
-          placeholder="Email"
-          onChangeText={handleChange('email')}
-          onBlur={handleBlur('email')}
-          value={values.email}
-        />
-         <TextInput style={styles.TextInput}
-          placeholder="username"
-          onChangeText={handleChange('userName')}
-          onBlur={handleBlur('userName')}
-          value={values.userName}
-        />
-         <TextInput style={styles.TextInput}
-         placeholder="password"
-          onChangeText={handleChange('password')}
-          onBlur={handleBlur('password')}
-          value={values.password}
-        />
-        <Button onPress={handleSubmit} title="Submit" />
-
-      </View>
-      
-    )}
-  </Formik>
-  
-);
-
-
-const styles = StyleSheet.create({
-  TextInput:{
-    border:"solid 1px grey",
-    padding:"2px",
-    margin:"2px"
-  },
-  // container:{
-  //   justifyContent:"center"
-  // }
-})
-
+       <input
+         id="username"
+         name="username"
+         type="text"
+         onChange={Formik.handleChange}
+         value={Formik.values.username}
+       />
+       <input
+         id="email"
+         name="email"
+         type="text"
+         onChange={Formik.handleChange}
+         value={Formik.values.email}
+       />
+       <input
+         id="password"
+         name="password"
+         type="text"
+         onChange={Formik.handleChange}
+         value={Formik.values.password}
+       />
+        <Button onPress={Formik.handleSubmit} title="Submit" />
+       </form>
+       </View>
+  )
+}
 
 
 

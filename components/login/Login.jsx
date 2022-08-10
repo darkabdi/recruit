@@ -1,6 +1,6 @@
 import { useFormik } from 'formik'
 import React from 'react'
-import { Button } from 'react-native'
+import { Button, View } from 'react-native'
 
 export const Login =() =>{
   let listOfUsers = []
@@ -12,23 +12,35 @@ export const Login =() =>{
       password:""
     },
     onSubmit:values=>{
-   
-     listOfUsers.push(values)
-     console.log(listOfUsers)
-    }
-
+      console.log(JSON.stringify(values))
+      console.log(values)
+  } 
   })
+
+
   return (
+    <View>
     <form onSubmit={Formik.handleSubmit}> 
-      
+  
        <input
          id="username"
          name="username"
          type="text"
          onChange={Formik.handleChange}
-         value={Formik.values.firstName}
+         value={Formik.values.username}
+         
        />
-        <Button onPress={Formik.handleSubmit} title="Submit" />
+       <input
+         id="password"
+         name="password"
+         type="password"
+         onChange={Formik.handleChange}
+         value={Formik.values.password}
+         
+       />
+
+        <button onClick={Formik.handleSubmit}>Login</button>
        </form>
+       </View>
   )
 }
