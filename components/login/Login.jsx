@@ -4,8 +4,9 @@ import { Button, View } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-export const Login =({navigation}) =>{
-
+export const Login =({route,navigation}) =>{
+  const values = JSON.parse(route.params)
+  console.log(values)
   const formData = new FormData()
   const Formik = useFormik({
     initialValues:{
@@ -39,9 +40,9 @@ export const Login =({navigation}) =>{
          value={Formik.values.password}
          
        />
-
-        <button type='submit' onClick={Formik.handleSubmit}>Register</button>
-        <button onClick={()=>navigation.navigate("Register")}>Login</button>
+        <button onClick={()=>navigation.navigate("Register")}>Register</button>
+        <button type='submit' onClick={Formik.handleSubmit}>Login</button>
+        
        </form>
        </View>
   )

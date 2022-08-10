@@ -15,7 +15,7 @@ export const Register =({navigation}) =>{
     onSubmit:values=>{
       console.log(JSON.stringify(values))
       console.log(values)
-      navigation.navigate("Login",{values})
+      navigation.navigate("Login",JSON.stringify(values))
   } 
   })
 
