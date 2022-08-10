@@ -5,6 +5,7 @@ import { Button, View } from 'react-native'
 export const Register =({navigation}) =>{
   // let listOfUsers = []
   // const formData = new FormData()
+ 
   const Formik = useFormik({
     initialValues:{
       username:"",
@@ -14,6 +15,7 @@ export const Register =({navigation}) =>{
     onSubmit:values=>{
       console.log(JSON.stringify(values))
       console.log(values)
+      navigation.navigate("Login",{values})
   } 
   })
 
@@ -43,8 +45,9 @@ export const Register =({navigation}) =>{
          onChange={Formik.handleChange}
          value={Formik.values.password}
        />
-        <Button onPress={Formik.handleSubmit} title="Submit" />
+        <button onClick={Formik.handleChange}>Register</button>
        </form>
+    
        </View>
   )
 }

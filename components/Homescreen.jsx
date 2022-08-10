@@ -12,7 +12,7 @@ export default function Homescreen ({navigation}){
       />
        <Button
        title='Register'
-       onPress={()=>navigation.navigate("Register")}
+       onPress={()=>navigation.push("Register")}
        />
 
       </View>
